@@ -1,0 +1,138 @@
+* {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  background-color: #f5feff;
+}
+
+.navbar {
+  text-align: center;
+  background-color: #013135;
+  color: white;
+  font-size: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  padding: 1rem 2rem;
+}
+
+.navbar h1 {
+  padding: 0 0.5rem;
+}
+
+input {
+  border-radius: 5px 0px 0px 5px;
+  padding: 0.5rem 1rem;
+  border: none;
+  background-color: #f5feff;
+}
+
+input:focus {
+  outline: none;
+}
+
+button {
+  padding: 0.5rem 1.5rem;
+  border-radius: 0px 5px 5px 0px;
+  border: none;
+  cursor: pointer;
+  background-color: #0ac2d6;
+  transition: 0.3s;
+}
+
+button:hover {
+  background-color: #078492;
+}
+
+.movie {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 800px;
+  margin: 2rem auto;
+}
+
+.movieTitle {
+  margin-bottom: 1rem;
+  font-size: 2.5rem;
+  text-align: center;
+}
+
+.movieInfo {
+  display: flex;
+  gap: 2rem;
+}
+
+.plot {
+  margin-bottom: 1rem;
+}
+
+.bold {
+  font-weight: 600;
+}
+
+.enterMovie {
+  text-align: center;
+  margin: 6rem 1rem;
+  font-size: 3.2rem;
+}
+
+@media screen and (max-width: 900px) {
+  .navbar {
+    flex-direction: column;
+  }
+
+  input {
+    margin-bottom: 1rem;
+  }
+
+  .movie {
+    max-width: 400px;
+    justify-self: center;
+    align-items: center;
+  }
+
+  .movieInfo {
+    flex-direction: column;
+  }
+
+  .left {
+    display: flex;
+    justify-content: center;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .navbar h1 {
+    font-size: 2.5rem;
+  }
+}
+
+@media screen and (max-width: 520px) {
+  .navbar h1 {
+    font-size: 2rem;
+  }
+}
+
+
+/* Loader */
+
+.loader {
+  margin: 10rem auto;
+  width: 250px;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: 
+    radial-gradient(farthest-side,#013135 94%,#0000) top/8px 8px no-repeat,
+    conic-gradient(#0000 40%,#013135);
+  -webkit-mask: radial-gradient(farthest-side,#0000 calc(100% - 10px),#000 0);
+  animation: l13 1s infinite linear;
+}
+@keyframes l13{ 
+  100%{transform: rotate(1turn)}
+}
