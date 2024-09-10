@@ -55,7 +55,7 @@ function App() {
       )}
 
       {
-        searchResults.length == 0 && !error ? <h1 className="enterMovie">Search something to get results...</h1>: ""
+        searchResults.length == 0 && !error && !loading? <h1 className="enterMovie">Search something to get results...</h1>: ""
       }
     </>
   )

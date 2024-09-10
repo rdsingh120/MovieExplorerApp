@@ -3,8 +3,8 @@ var i = 0
 
 const SearchResults = ({ searchResults, input }) => {
   return (
-    <>
-      <h1 className="" style={{ fontSize: '2rem', margin: '3rem 23rem' }}>
+    <div className='results-container'>
+      <h1 className="">
         {searchResults.length > 0 ? `Search results for "${input}"` : ''}
       </h1>
       <div className="results">
@@ -12,7 +12,7 @@ const SearchResults = ({ searchResults, input }) => {
           <SearchResult key={i++} {...movie} />
         ))}
       </div>
-    </>
+    </div>
   )
 }
 export default SearchResults
