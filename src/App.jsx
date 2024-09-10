@@ -3,7 +3,7 @@ import Navbar from './components/Navbar'
 import Loader from './components/Loader'
 import SearchResults from './components/SearchResults'
 var i = 0
-
+let n = 1
 function App() {
   const key = import.meta.env.VITE_API_KEY
   const [inputValue, setInputValue] = useState('')
@@ -15,7 +15,7 @@ function App() {
     if (keyword) {
       setLoading(true)
       const response = await fetch(
-        `https://www.omdbapi.com/?s=${keyword}&apikey=${key}&page=1`
+        `https://www.omdbapi.com/?s=${keyword}&apikey=${key}&page=${n}`
       )
       const data = await response.json()
       if (data.Response == 'False') {
@@ -53,6 +53,10 @@ function App() {
       ) : (
         <SearchResults searchResults={searchResults} />
       )}
+
+      {
+        searchResults.length == 0 && !error ? <h1 className="enterMovie">Search something to get results...</h1>: ""
+      }
     </>
   )
 }
