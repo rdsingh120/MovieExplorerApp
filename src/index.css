@@ -57,12 +57,6 @@ button:hover {
   margin: 2rem auto;
 }
 
-.movieTitle {
-  margin-bottom: 1rem;
-  font-size: 2.5rem;
-  text-align: center;
-}
-
 .movieInfo {
   display: flex;
   gap: 2rem;
@@ -80,6 +74,67 @@ button:hover {
   text-align: center;
   margin: 6rem 1rem;
   font-size: 3.2rem;
+}
+
+.results {
+  max-width: 1150px;
+  margin: 5rem auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2rem;
+}
+
+.img-container {
+  border-radius: 0.5rem;
+  overflow: hidden;
+}
+
+.searchResult {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1rem;
+  max-width: 200px;
+  cursor: pointer;
+}
+
+.searchResult img {
+  width: 200px;
+  height: 300px;
+  object-fit: cover;
+  border-radius: 0.5rem;
+}
+
+.searchResult .title {
+  font-size: 0.9rem;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  text-align: left;
+}
+
+#my-tooltip {
+  font-size: .7rem;
+  letter-spacing: 1px;
+  padding: 1px 3px;
+}
+
+.details {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.details span {
+  font-size: 0.8rem;
+  text-transform: capitalize;
+  letter-spacing: 0.5px;
+  color: #838080;
+}
+
+.details span.type {
+  border: 1px solid#838080;
+  padding: 1px 3px;
+  border-radius: 0.2rem;
 }
 
 @media screen and (max-width: 900px) {
@@ -119,7 +174,6 @@ button:hover {
   }
 }
 
-
 /* Loader */
 
 .loader {
@@ -127,12 +181,14 @@ button:hover {
   width: 250px;
   aspect-ratio: 1;
   border-radius: 50%;
-  background: 
-    radial-gradient(farthest-side,#013135 94%,#0000) top/8px 8px no-repeat,
-    conic-gradient(#0000 40%,#013135);
-  -webkit-mask: radial-gradient(farthest-side,#0000 calc(100% - 10px),#000 0);
+  background: radial-gradient(farthest-side, #013135 94%, #0000) top/8px 8px
+      no-repeat,
+    conic-gradient(#0000 40%, #013135);
+  -webkit-mask: radial-gradient(farthest-side, #0000 calc(100% - 10px), #000 0);
   animation: l13 1s infinite linear;
 }
-@keyframes l13{ 
-  100%{transform: rotate(1turn)}
+@keyframes l13 {
+  100% {
+    transform: rotate(1turn);
+  }
 }
