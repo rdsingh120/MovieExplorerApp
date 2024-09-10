@@ -46,12 +46,12 @@ function App() {
       />
       {error ? (
         <h1 className="enterMovie">
-          Sorry we couldn't find what you're looking for. Try something else...
+          Sorry we couldn't find "{keyword}". Try something else...
         </h1>
       ) : loading ? (
         <Loader />
       ) : (
-        <SearchResults searchResults={searchResults} />
+        <SearchResults searchResults={searchResults} input={keyword} />
       )}
 
       {
