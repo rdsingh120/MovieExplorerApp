@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import Navbar from './components/Navbar'
-import Loader from './components/Loader'
 import SearchResults from './components/SearchResults'
+import Skeletons from './components/Skeletons'
 var i = 0
 let n = 1
 function App() {
@@ -49,7 +49,7 @@ function App() {
           Sorry we couldn't find "{keyword}". Try something else...
         </h1>
       ) : loading ? (
-        <Loader />
+        <Skeletons />
       ) : (
         <SearchResults searchResults={searchResults} input={keyword} />
       )}
