@@ -33,6 +33,13 @@ https://movie-search-app-react-project.netlify.app/
 - Responsive design with Tailwind CSS.
 - Easy navigation between pages using React Router DOM.
 
+## Environment Variables
+
+To run this project, you will need to add the following environment variables to your .env file
+
+`VITE_API_KEY=`
+
+
 ## 🚀 Run Locally
 
 ***Prerequisites***
