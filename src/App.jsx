@@ -1,64 +1,65 @@
-import { useEffect, useState } from 'react'
+import axios from 'axios'
+import { useState } from 'react'
+import { Routes, Route } from 'react-router-dom'
 import Navbar from './components/Navbar'
-import SearchResults from './components/SearchResults'
-import Skeletons from './components/Skeletons'
-var i = 0
-let n = 1
-function App() {
-  const key = import.meta.env.VITE_API_KEY
-  const [inputValue, setInputValue] = useState('')
+import HomePage from './pages/HomePage'
+import toast, { Toaster } from 'react-hot-toast'
+import MovieDetails from './Pages/MovieDetails'
+import Footer from './components/Footer'
+
+const App = () => {
+  const [input, setInput] = useState('')
   const [keyword, setKeyword] = useState('')
-  const [searchResults, setSearchResults] = useState([])
+  const [results, setResults] = useState([])
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState(false)
-  const fetchMovie = async () => {
-    if (keyword) {
+  const key = import.meta.env.VITE_API_KEY
+  const fetchData = async () => {
+    if (!input) {
+      toast.error('Please enter somethings.')
+      return
+    }
+    try {
       setLoading(true)
-      const response = await fetch(
-        `https://www.omdbapi.com/?s=${keyword}&apikey=${key}&page=${n}`
+      const { data } = await axios.get(
+        `https://www.omdbapi.com/?s=${input}&apikey=${key}`
       )
-      const data = await response.json()
-      if (data.Response == 'False') {
+      setKeyword(input)
+      setInput('')
+      if (data.Response === 'False') {
         setError(true)
         setLoading(false)
-        setSearchResults([])
         return
       }
-      setSearchResults(data?.Search)
-      setError(false)
+      setResults(data.Search)
       setLoading(false)
+      setError(false)
+    } catch (error) {
+      console.log(error)
+      setLoading(false)
+      setError(true)
     }
   }
-  useEffect(() => {
-    fetchMovie()
-  }, [keyword])
-
   return (
-    <>
-      <Navbar
-        onSubmit={(e) => {
-          e.preventDefault()
-          setKeyword(inputValue)
-          setInputValue('')
-        }}
-        value={inputValue}
-        onChange={(e) => setInputValue(e.target.value)}
-      />
-      {error ? (
-        <h1 className="enterMovie">
-          Sorry we couldn't find "{keyword}". Try something else...
-        </h1>
-      ) : loading ? (
-        <Skeletons />
-      ) : (
-        <SearchResults searchResults={searchResults} input={keyword} />
-      )}
-
-      {
-        searchResults.length == 0 && !error && !loading? <h1 className="enterMovie">Search something to get results...</h1>: ""
-      }
-    </>
+    <div className="">
+      <Navbar input={input} setInput={setInput} fetchData={fetchData} />
+      <Toaster position="top-right" reverseOrder={false} />
+      <Routes>
+        <Route
+          path="/"
+          element={
+            <HomePage
+              results={results}
+              keyword={keyword}
+              loading={loading}
+              error={error}
+            />
+          }
+        />
+        <Route path="/:id" element={<MovieDetails />} />
+      </Routes>
+      <Footer/>
+    </div>
   )
 }
-
 export default App
