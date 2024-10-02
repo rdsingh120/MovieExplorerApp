@@ -6,6 +6,7 @@ import { BiLogoImdb } from 'react-icons/bi'
 import { SiRottentomatoes } from 'react-icons/si'
 import { SiMetacritic } from 'react-icons/si'
 import Loader from '../components/Loader'
+import img from '../assets/poster.jpg'
 
 const MovieDetails = () => {
   const [movie, setMovie] = useState({})
@@ -39,7 +40,11 @@ const MovieDetails = () => {
   return (
     <div className="flex flex-wrap justify-center items-center gap-5 mt-10 m-2 relative min-h-[67vh]">
       <div className="flex justify-center bg-glass rounded-lg py-10 px-5 max-w-[450px] w-full md:sticky md:top-10">
-        <img src={movie?.Poster} className="rounded-lg" alt="" />
+        <img
+          src={movie?.Poster == 'N/A' ? img : movie?.Poster}
+          className="rounded-lg"
+          alt=""
+        />
       </div>
       <div className="flex flex-col items-start max-w-[550px] w-full gap-2 bg-glass  rounded-lg p-5">
         <span className=" bg-sky-500 text-xs px-2 py-.5 rounded-full capitalize">
