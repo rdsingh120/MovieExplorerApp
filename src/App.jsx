@@ -2,7 +2,7 @@ import axios from 'axios'
 import { useState } from 'react'
 import { Routes, Route } from 'react-router-dom'
 import Navbar from './components/Navbar'
-import HomePage from './pages/HomePage'
+import HomePage from './Pages/HomePage'
 import toast, { Toaster } from 'react-hot-toast'
 import MovieDetails from './Pages/MovieDetails'
 import Footer from './components/Footer'
@@ -58,7 +58,7 @@ const App = () => {
         />
         <Route path="/:id" element={<MovieDetails />} />
       </Routes>
-      <Footer/>
+      <Footer />
     </div>
   )
 }
