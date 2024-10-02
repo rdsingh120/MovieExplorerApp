@@ -8,15 +8,19 @@ const HomePage = ({ results, keyword, loading, error }) => {
         <Loader />
       ) : (
         <div className="flex justify-center max-w-6xl mx-auto p-2">
-          {results?.length == 0 ? (
+          {error ? (
             <span
               className="text-white mt-5 text-3xl max-lg:text-2xl max-md:text-xl 
           max-sm:text-lg text-center"
             >
-              {error
-                ? `Sorry we couldn't find "${keyword}". Try something
-              else...`
-                : 'Search something to get results...'}
+              Sorry we couldn't find "{keyword}". Try something else...
+            </span>
+          ) : results?.length == 0 ? (
+            <span
+              className="text-white mt-5 text-3xl max-lg:text-2xl max-md:text-xl 
+          max-sm:text-lg text-center"
+            >
+              Search something to get results...
             </span>
           ) : (
             <Results results={results} keyword={keyword} error={error} />
